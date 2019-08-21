@@ -1,14 +1,12 @@
 // Otra forma, intentando eliminar el return pero no funciona sin el.
-const person = {
-  firstName: "John",
-  lastName : "Doe",
-  id       : 5566,
-  fullName () {
-    return (() => this.firstName + " " + this.lastName)();
+const square = {
+  length: 10,
+  breadth: 10,
+  getArea() {
+    return (() => this.length * this.breadth)();
   }
 };
 
-console.log(`first name: ${person.firstName}`);
-console.log(`last name: ${person.lastName}`);
-console.log(`id: ${person.id}`);
-console.log(`Fullname: ${person.fullName()}`);
+console.log(`length: ${square.length}`);
+console.log(`breadth: ${square.breadth}`);
+console.log(`area: ${square.getArea()}`);
