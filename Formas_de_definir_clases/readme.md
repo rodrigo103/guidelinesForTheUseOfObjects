@@ -14,22 +14,20 @@ I will try to generate examples and collect all the pro and cons of the differen
 ## Functions
 
 ``` js
-function Rectangle(length, breadth) {
-  this.length = length;
-  this.breadth = breadth;
+const square = {
+  length: 10,
+  breadth: 10,
 
-  this.getArea = function() {
+  getArea: function() {
     return this.length * this.breadth;
-  };
-}
+  },
+  printAll: function() {
+    console.log(`length: ${this.length}`);
+    console.log(`breadth: ${this.breadth}`);
+    console.log(`area: ${this.getArea()}`);
+  }
+};
 
-Rectangle.prototype.printAll = function() {
-  console.log(`The length is: ${this.length}`);
-  console.log(`The breadth is: ${this.breadth}`);
-  console.log(`The area is: ${this.getArea()}`);
-}
-
-const square = new Rectangle(10, 10);
 square.printAll();
 ```
 
@@ -53,7 +51,7 @@ const square = {
 square.printAll();
 ```
 
-Thanks to ES6 we can avoid the function keydowd and write instead:
+Thanks to ES6 we can avoid the function keyword and write instead:
 
 ``` js
 const square = {
@@ -91,6 +89,8 @@ Rectangle.prototype.printAll = function() {
   console.log(`The area is: ${this.getArea()}`);
 }
 ```
+
+## Functinal mixins
 
 ## Classes
 
