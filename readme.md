@@ -1,7 +1,7 @@
 
 # Object guidelines
 
-Javascript is not a class based language, is a multi paradigm programming language wich supports prototype based Object Oriented Programming (OOP).
+Javascript is not a class based language, is a multi paradigm programming language wich supports prototype based Object Oriented Programming (OOP) .
 This gives us several different ways to work with objects.
 But in general, the following guideline should be followed:
 
@@ -11,7 +11,20 @@ Functions > objects > factory functions > functional mixins > classes"
 
 I will try to generate examples and collect all the pro and cons of the different implementations and why we choose to follow the previous guideline.
 
+"You should always use the simplest possible abstraction to solve the problem you’re working on. Start with a pure function. If you need an object with persistent state, try a factory function. If you need to build more complex objects, try functional mixins."  
+<https://medium.com/javascript-scene/functional-mixins-composing-software-ffb66d5e731c>
+
 ## Functions
+
+The functions should be pure functions:
+
+- Each input combination correstpond to exactly one output.
+- They only depend on the input data.
+- They do not alter the input data. (Inmutability)
+
+They should not produce any side effect, that means, they should not modify the state the program.
+
+<https://codeburst.io/functional-programming-in-javascript-e57e7e28c0e5>
 
 ``` js
 const square = {
@@ -95,6 +108,8 @@ square.printAll();
 
 ## Factory functions
 
+It is not possible to add Methods to a factory function after it was defined.
+
 ``` js
 function Rectangle(length, breadth) {
   this.length = length;
@@ -103,6 +118,7 @@ function Rectangle(length, breadth) {
   this.getArea = function() {
     return this.length * this.breadth;
   };
+  this.
 }
 
 Rectangle.prototype.printAll = function() {
@@ -113,6 +129,8 @@ Rectangle.prototype.printAll = function() {
 ```
 
 ## Functinal mixins
+
+Functional mixins are a data structure that provides a higher abstraction. They also provide true encapsulation. This is something that even classes fail to provide.
 
 ## Classes
 

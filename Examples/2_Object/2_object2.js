@@ -5,12 +5,13 @@ const square = {
 
   getArea() {
     return this.length * this.breadth;
-  },
-  printAll() {
-    console.log(`length: ${this.length}`);
-    console.log(`breadth: ${this.breadth}`);
-    console.log(`area: ${this.getArea()}`);
   }
+};
+// this implementation brings problems with the use of the arrow function.
+square.printAll = () => {
+  console.log(`length: ${this.length}`);
+  console.log(`breadth: ${this.breadth}`);
+  console.log(`area: ${this.getArea()}`);
 };
 
 square.printAll();

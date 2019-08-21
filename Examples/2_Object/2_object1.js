@@ -5,12 +5,13 @@ const square = {
 
   getArea: function() {
     return this.length * this.breadth;
-  },
-  printAll: function() {
-    console.log(`length: ${this.length}`);
-    console.log(`breadth: ${this.breadth}`);
-    console.log(`area: ${this.getArea()}`);
   }
+};
+
+square.printAll = function() {
+  console.log(`length: ${this.length}`);
+  console.log(`breadth: ${this.breadth}`);
+  console.log(`area: ${this.getArea()}`);
 };
 
 console.log(`length accessing property from outside: ${square.length}`);
