@@ -18,3 +18,4 @@ console.log(`breadth accessing property from outside: ${square.breadth}`);
 console.log(`area accessing property from outside: ${square.getArea()}`);
 
 square.printAll();
+console.log(typeof square, typeof square.getArea, typeof square.printAll);

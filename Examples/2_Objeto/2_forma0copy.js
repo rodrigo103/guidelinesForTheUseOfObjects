@@ -2,6 +2,7 @@
 const square = {
   length: 10,
   breadth: 10,
+
   getArea() {
     return this.length * this.breadth;
   },
@@ -13,3 +14,4 @@ const square = {
 };
 
 square.printAll();
+console.log(typeof square, typeof square.getArea, typeof square.printAll);
