@@ -53,7 +53,7 @@ const square = {
 square.printAll();
 ```
 
-Thanks to ES6 we can write instead:
+Thanks to ES6 we can avoid the function keydowd and write instead:
 
 ``` js
 const square = {
