@@ -1,5 +1,5 @@
 
-# Objects
+# Object guidelines
 
 Javascript is not a class based language, is a multi paradigm programming language wich supports prototype based Object Oriented Programming (OOP).
 This gives us several different ways to work with objects.
@@ -16,19 +16,41 @@ I will try to generate examples and collect all the pro and cons of the differen
 ``` js
 const square = {
   length: 10,
-  breadth: 10,
-
-  getArea: function() {
-    return this.length * this.breadth;
-  },
-  printAll: function() {
-    console.log(`length: ${this.length}`);
-    console.log(`breadth: ${this.breadth}`);
-    console.log(`area: ${this.getArea()}`);
-  }
+  breadth: 10
 };
 
-square.printAll();
+function getArea(square) {
+  return square.length * square.breadth;
+}
+
+function printAll(square) {
+  console.log(`length: ${square.length}`);
+  console.log(`breadth: ${square.breadth}`);
+  console.log(`area: ${getArea(square)}`);
+}
+
+printAll(square);
+```
+
+After ES6 we can write:
+
+``` js
+const square = {
+  length: 10,
+  breadth: 10
+};
+
+const getArea = square => {
+  return square.length * square.breadth;
+};
+
+const printAll = square => {
+  console.log(`length: ${square.length}`);
+  console.log(`breadth: ${square.breadth}`);
+  console.log(`area: ${getArea(square)}`);
+};
+
+printAll(square);
 ```
 
 ## Objects
