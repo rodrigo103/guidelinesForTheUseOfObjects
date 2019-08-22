@@ -1,7 +1,6 @@
 const Rectangle = (newlength, newbreadth) => o => {
   let length = newlength;
   let breadth = newbreadth;
-  
 
   return Object.assign({}, o, {
     length,
@@ -28,13 +27,18 @@ const pipe = (...fns) => x => fns.reduce((y, f) => f(y), x);
 // OR...
 // import pipe from `lodash/fp/flow`;
 
+// At this point we have two ways of creating the object:
 const createRectangle = (breadth, length) =>
   pipe(
     Rectangle(breadth, length),
     printAll()
   )({});
 
+// Or more compressed but more difficult to read
+const createRectangle2 = (breadth, length) =>
+  printAll()(Rectangle(breadth, length)({}));
 
 const square2 = createRectangle(9, 9);
-console.log(square2.getArea());
+const square3 = createRectangle2(3, 4);
 square2.printAll();
+square3.printAll();
