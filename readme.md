@@ -30,6 +30,8 @@ They should not produce any side effect, that means, they should not modify the 
 
 <https://codeburst.io/functional-programming-in-javascript-e57e7e28c0e5>
 
+Using _declarations_:
+
 ``` js
 const square = {
   length: 10,
@@ -49,7 +51,28 @@ function printAll(square) {
 printAll(square);
 ```
 
-After ES6 we can write:
+Using _expressions_:
+
+``` js
+const square = {
+  length: 10,
+  breadth: 10
+};
+
+const getArea = function(square) {
+  return square.length * square.breadth;
+}
+
+const printAll = function(square) {
+  console.log(`length: ${square.length}`);
+  console.log(`breadth: ${square.breadth}`);
+  console.log(`area: ${getArea(square)}`);
+}
+
+printAll(square);
+```
+
+After ES6 we can write them using arrow functions:
 
 ``` js
 const square = {
@@ -73,7 +96,7 @@ printAll(square);
 ## Objects
 
 In both following Objects examples we can see that we can define methods inside an object.  
-Why would we do this?
+(Why would we do this? Is there any benefit?)
 
 ``` js
 const square = {
@@ -164,7 +187,7 @@ square.printAll = function() {
 square.printAll();
 ```
 
-## Functinal mixins
+## Functional mixins
 
 Functional mixins are a data structure that provides a higher abstraction. They also provide true encapsulation. This is something that even classes fail to provide.
 
@@ -223,8 +246,14 @@ There are two main ways of implementing classes in Javascript
 
 ### _Using a constructor function_
 
-Note that in this context, the use of the __function__ keyword cannot be avoided, we cannot use arrow functions because the context is not passed properly with the __this__ keyword.  
-Note2: Altough it looks similar, it is not the same as a factory function.
+Note that in this context, the use of the __function__ keyword cannot be avoided, we cannot use arrow functions because the context is not passed properly with the keyword __this__.  
+Note2: Altough it looks similar, it is very different from a factory function.
+The use of constructors should be avoided as there are many drawbacks(  
+read more about it here:  
+<https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e>  
+and here:  
+<https://stackoverflow.com/questions/8698726/constructor-function-vs-factory-functions>  
+). Use factory functions instead.
 
 ``` js
 function Rectangle(length, breadth) {
