@@ -30,5 +30,7 @@ const quacker = quacking('Quack!')({});
 console.log(quacker.quack()); // 'Quack!'
 
 const createDuck = quack => quacking(quack)(flying({}));
+
 const duck = createDuck('Quack!');
+console.log(flying, quacking, bird, duck, quacker);
 console.log(duck.fly().quack());
