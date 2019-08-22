@@ -1,13 +1,12 @@
 const Rectangle = (newlength, newbreadth) => o => {
   let length = newlength;
   let breadth = newbreadth;
+  const getArea = () => length * breadth;
 
   return Object.assign({}, o, {
     length,
     breadth,
-    getArea() {
-      return length * breadth;
-    }
+    getArea
   });
 };
 

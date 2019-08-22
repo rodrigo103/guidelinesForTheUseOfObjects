@@ -11,6 +11,11 @@ Functions > objects > factory functions > functional mixins > classes"
 "You should always use the simplest possible abstraction to solve the problem you’re working on. Start with a pure function. If you need an object with persistent state, try a factory function. If you need to build more complex objects, try functional mixins."  
 <https://medium.com/javascript-scene/functional-mixins-composing-software-ffb66d5e731c>
 
+Much has been debated about whether Javascript is a true OOP language or not.
+
+Javascipt is a strongly object-based language, to the point that everything in javascript is an object, however, in terms of class usage, class syntax was introduced in the ES6 language, which is actually sugar syntax to the method of inheritance by prototypes.
+One can with javascript do everything a classic OOP language can do, but the syntax requires some more work.
+
 I will try to generate examples and collect all the pro and cons of the different implementations and why we choose to follow the previous guideline.
 
 ## Functions
@@ -162,6 +167,55 @@ square.printAll();
 ## Functinal mixins
 
 Functional mixins are a data structure that provides a higher abstraction. They also provide true encapsulation. This is something that even classes fail to provide.
+
+``` js
+const Rectangle = (newlength, newbreadth) => o => {
+//   Here we define all the attributes of a mixin
+  let length = newlength;
+  let breadth = newbreadth;
+  const getArea = () => length * breadth;
+
+// And here we specify wich of the attributes we want to make public
+  return Object.assign({}, o, {
+    length,
+    breadth,
+    getArea
+  });
+};
+
+// We can also define and specify that an attribute is public at the same time
+const printAll = () => o =>
+  Object.assign({}, o, {
+    printAll: () => {
+      console.log(`length: ${o.length}`);
+      console.log(`breadth: ${o.breadth}`);
+      console.log(`area: ${o.getArea()}`);
+    }
+  });
+
+const square = Rectangle(11, 14)({});
+console.log(square.getArea());
+
+const pipe = (...fns) => x => fns.reduce((y, f) => f(y), x);
+// OR...
+// import pipe from `lodash/fp/flow`;
+
+// At this point we have two ways of creating the object:
+const createRectangle = (breadth, length) =>
+  pipe(
+    Rectangle(breadth, length),
+    printAll()
+  )({});
+
+// Or more compressed but more difficult to read
+const createRectangle2 = (breadth, length) =>
+  printAll()(Rectangle(breadth, length)({}));
+
+const square2 = createRectangle(9, 9);
+const square3 = createRectangle2(3, 4);
+square2.printAll();
+square3.printAll();
+```
 
 ## Classes
 
