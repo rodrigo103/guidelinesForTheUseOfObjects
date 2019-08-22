@@ -1,12 +1,12 @@
-const Rectangle = (length, breadth) => {
-  return {
-    length: length,
-    breadth: breadth,
-    getArea() {
-      return this.length * this.breadth;
-    }
+function Rectangle(length, breadth) {
+  this.length = length;
+  this.breadth = breadth;
+
+  this.getArea = function() {
+    return this.length * this.breadth;
   };
-};
+  return this;
+}
 
 const square = Rectangle(10, 10);
 
